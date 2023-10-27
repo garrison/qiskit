@@ -746,7 +746,7 @@ def _write_custom_operation(file_obj, name, operation, custom_operations, use_sy
         num_ctrl_qubits = operation.num_ctrl_qubits
         ctrl_state = operation.ctrl_state
         base_gate = operation.base_gate
-    elif operation.definition is not None:
+    elif not operation._directive and operation.definition is not None:
         has_definition = True
         data = common.data_to_binary(operation.definition, write_circuit)
         size = len(data)
